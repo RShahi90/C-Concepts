@@ -1,0 +1,49 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+template<class T>
+class AutoPtr {
+    T *m_ptr;
+    public : 
+    AutoPtr(T* ptr=nullptr) 
+    : m_ptr(ptr) {}
+    ~AutoPtr() {
+        delete m_ptr;
+    }
+    T* operator->() {return m_ptr;}
+    T operator*() {return *m_ptr;}
+};
+
+struct stt{
+    stt(char* name_, int age_) {
+        name = name_;
+        age = age_;
+    }
+    char* name;
+    int age;
+};
+
+template<typename T>
+void func(AutoPtr<T> myPtr) {
+    
+}
+int main()
+{
+    AutoPtr<int> myPtr(new int(10));
+    cout << *myPtr << endl;
+    cout<<"Hello World" << endl; 
+    AutoPtr<stt> myStructPtr(new stt("radhika", 20));
+    cout << myStructPtr->name << endl;
+    //AutoPtr<stt>  myStructPtr1(myStructPtr1);
+    
+    //func(myStructPtr);
+    return 0;
+}
